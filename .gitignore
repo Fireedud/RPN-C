@@ -1,0 +1,11 @@
+#extraneous vim files
+*~
+*.swp
+*.swo
+
+#exectuables, objects, etc.
+*.o
+*.dll
+*.a
+*.lib
+*.exe
