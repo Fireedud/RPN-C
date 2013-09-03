@@ -1,1 +1,2 @@
-
+A Reverse Polish Notation Calculator in C.
+Operations and Operands are space delimited.
