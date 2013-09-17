@@ -4,6 +4,10 @@
 
 //Stack will be a global variable for this program
 
+void push(temp)
+{
+}
+
 void eval(char exp[])
 {
 	char c = '1'; //anything besides '\0' will work
@@ -15,7 +19,7 @@ void eval(char exp[])
 		}
 		//PSUEDOCODE:
 		//If int(temp) {
-		//    push(stack, temp);
+		//    push(temp);
 		//    }
 		//Else doop
 	}
