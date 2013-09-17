@@ -4,7 +4,7 @@
 
 //Stack will be a global variable for this program
 
-void eval(char *exp[])
+void eval(char exp[])
 {
 	char c = '1'; //anything besides '\0' will work
 	int i = 0;
@@ -20,3 +20,16 @@ void eval(char *exp[])
 		//Else doop
 	}
 }
+
+int main(int argc, char *argv[])
+{
+	char exp[200]; //I will assume this for now
+	while(1){
+		scanf("%s", &exp);
+		exp[199] = '\0'; //just in case
+		eval(exp);
+		printf("%i", Stack.top.value);
+	}
+
+	return 0;
+}	
