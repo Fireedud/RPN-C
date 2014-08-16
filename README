@@ -1,10 +1,10 @@
 A Reverse Polish Notation Calculator in C.
 Operations and Operands are space delimited.
 
-Currently, it only supports addition and subtraction.
+Currently, it only supports addition, subtraction, multiplication, and division.
 
 To Do:
-Implement multiplication and division.
+Change data types only when necessary.
 Implement exponentiaion.
 
 Maybe Do:
