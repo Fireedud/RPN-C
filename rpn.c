@@ -5,17 +5,17 @@
 
 #include "rpn.h"
 
-int pop(struct Stack *S)
+float pop(struct Stack *S)
 {
 	assert(S->top != NULL);
 	struct Stack_value *top = S->top;
-	int retval = top->value;
+	float retval = top->value;
 	(S->top) = top->prev;
 	free(top);
 	return retval;
 }
 
-void push(struct Stack *S, int n)
+void push(struct Stack *S, float n)
 {
 	struct Stack_value *val = malloc(sizeof(struct Stack_value));
 	assert(val != NULL);
@@ -24,22 +24,34 @@ void push(struct Stack *S, int n)
 	(S->top) = val;
 }
 
-int eval(struct Stack *S, char exp[])
+int op(char *c)
+{
+	return ((strcmp(c,"+")!=0)&&(strcmp(c,"-")!=0)&&(strcmp(c,"*")!=0)&&(strcmp(c,"/")!=0));
+}
+
+float eval(struct Stack *S, char exp[])
 {
 	char *val = strtok(exp, " ");
 	while(val != NULL){
-		if((strcmp(val,"+") != 0) && (strcmp(val,"-") != 0)){
-			push(S, atoi(val));
+		if(op(val)){
+			push(S, atof(val));
 		} else {
-			int n = pop(S);
-			int m = pop(S);
-			int r;
+			float n = pop(S);
+			float m = pop(S);
+			float r;
 			switch(val[0]){
 				case '+':
 					r = m+n;
 					break;
 				case '-':
 					r = m-n;
+					break;
+				case '*':
+					r = m*n;
+					break;
+				case '/':
+					assert(n!=0 && "Div by 0");
+					r = m/n;
 					break;
 				default:
 					break;
@@ -61,7 +73,7 @@ int main(int argc, char *argv[])
 			//eliminate trailing newlines
 			int pos = strlen(exp) - 1; 
 			if(exp[pos] == '\n') exp[pos] = '\0';
-			printf("%i\n", eval(S, exp));
+			printf("%f\n", eval(S, exp));
 		}
 	}
 
